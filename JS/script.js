@@ -71,7 +71,11 @@ function startGame(e){
     //cycle stamp
     for(let i = 1; i <= gameDiff; i++){
         const boxes = createBoxes(i, boxesNumberRow);
-        boxes.addEventListener('click', function safe(){
+        boxes.addEventListener('click', function(){
+            //check if boxes is a bomb
+            if(bombsGenerated.includes(parseInt(boxes.innerText))){
+                boxes.classList.add('boom');
+            }
             boxes.classList.add('safe'); //add safe color to safe boxes
         });
         document.getElementById('playarea').appendChild(boxes);

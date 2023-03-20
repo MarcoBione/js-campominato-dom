@@ -36,3 +36,7 @@ main{
 .safe{
     background-color: darkgreen;
 }
+
+.boom{
+    background-color: darkred;
+}
