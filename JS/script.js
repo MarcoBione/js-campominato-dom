@@ -100,17 +100,12 @@ function startGame(e){
                 if(bombsGenerated.includes(parseInt(boxes.innerText))){
                     //add boom class to box w/bomb
                     boxes.classList.add('boom');
-                    endGame = true;
                     //display end message + userscore
-                    userScore.classList.remove('text-white-50');
-                    userScore.classList.add('text-danger');
                     userScore.innerHTML = `BOOM, hai pestato una mina!`;
-                    
+                    endGame = true;                    
                 }else{
                     score++;
                     boxes.classList.add('safe'); //add safe color to safe boxes
-                    userScore.classList.remove('text-white-50');
-                    userScore.classList.add('text-success');
                     userScore.innerHTML = `Tutto tranquillo! punteggio : ${score}`;
                 }
                 
