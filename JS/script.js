@@ -30,6 +30,9 @@ function startGame(e){
 
     //number of bombs
     const bomb = 16;
+
+    //gamestatus
+    let endGame = false;
     
     //load user difficulty level
     const userDiff = document.querySelector('select').value;
@@ -72,11 +75,19 @@ function startGame(e){
     for(let i = 1; i <= gameDiff; i++){
         const boxes = createBoxes(i, boxesNumberRow);
         boxes.addEventListener('click', function(){
-            //check if boxes is a bomb
-            if(bombsGenerated.includes(parseInt(boxes.innerText))){
-                boxes.classList.add('boom');
+            //check gameover
+            if(!endGame){
+
+                //check if boxes is a bomb
+                if(bombsGenerated.includes(parseInt(boxes.innerText))){
+                    boxes.classList.add('boom');
+                    endGame = true;
+                }else{
+                    boxes.classList.add('safe'); //add safe color to safe boxes
+                }
+                
             }
-            boxes.classList.add('safe'); //add safe color to safe boxes
+            
         });
         document.getElementById('playarea').appendChild(boxes);
 
