@@ -97,8 +97,7 @@ function startGame(e){
                     //read the arreybomb for add class boom
                     for(let i = 0; i < bombsGenerated.length; i++){
                         console.log(bombsGenerated[i]);
-                        let boom = boxes.includes(bombsGenerated[i]);
-                        boom.classList.add('boom');
+                        boxes.classList.add('boom');
                     }
                     //add boom class to box w/bomb
                     //boxes.classList.add('boom');
