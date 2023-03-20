@@ -64,6 +64,11 @@ function startGame(e){
         case "hard" : 
         gameDiff = 49;
         break;
+
+        //dafault
+        case "default" :
+        gameDiff = 100;
+        break;
     }
     console.log(gameDiff);
 
@@ -93,14 +98,8 @@ function startGame(e){
 
                 //check if boxes is a bomb
                 if(bombsGenerated.includes(parseInt(boxes.innerText))){
-
-                    //read the arreybomb for add class boom
-                    for(let i = 0; i < bombsGenerated.length; i++){
-                        console.log(bombsGenerated[i]);
-                        boxes.classList.add('boom');
-                    }
                     //add boom class to box w/bomb
-                    //boxes.classList.add('boom');
+                    boxes.classList.add('boom');
                     endGame = true;
                     //display end message + userscore
                     userScore.classList.remove('text-white-50');
