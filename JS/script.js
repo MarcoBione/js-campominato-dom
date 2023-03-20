@@ -28,6 +28,9 @@ function startGame(e){
     //prevent form submit
     e.preventDefault();
 
+    //number of bombs
+    const bomb = 16;
+    
     //load user difficulty level
     const userDiff = document.querySelector('select').value;
     console.log(userDiff);
@@ -59,6 +62,10 @@ function startGame(e){
     let boxesNumberRow = Math.sqrt(gameDiff);
     console.log(boxesNumberRow);
 
+    //generate bombs - function call
+    const bombsGenerated = generateBombs (bomb, gameDiff);
+    console.log(bombsGenerated);
+
     document.getElementById('playarea').innerHTML='';
 
     //cycle stamp
@@ -69,7 +76,7 @@ function startGame(e){
         });
         document.getElementById('playarea').appendChild(boxes);
 
-    }
+    };
 
     //generating cubes
     function createBoxes(index , userDiff){
