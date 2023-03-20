@@ -23,6 +23,12 @@ btnPlay.addEventListener('submit', startGame);
 //check load correctly
 console.log(btnPlay);
 
+//userscore counter
+const userScore = document.createElement('p');
+userScore.innerHTML = `Benvenuto, per inizare a giocare seleziona la difficoltà!`;
+userScore.classList.add('text-white-50');
+document.getElementById('userscorecounter').appendChild(userScore);
+
 //game initializing
 function startGame(e){
     //prevent form submit
@@ -69,7 +75,14 @@ function startGame(e){
     const bombsGenerated = generateBombs (bomb, gameDiff);
     console.log(bombsGenerated);
 
+    //reset playarea
     document.getElementById('playarea').innerHTML='';
+
+    //userscore counter reset
+    userScore.innerHTML = ``;
+
+    //start score
+    let score = 0;
 
     //cycle stamp
     for(let i = 1; i <= gameDiff; i++){
@@ -80,10 +93,27 @@ function startGame(e){
 
                 //check if boxes is a bomb
                 if(bombsGenerated.includes(parseInt(boxes.innerText))){
-                    boxes.classList.add('boom');
+
+                    //read the arreybomb for add class boom
+                    for(let i = 0; i < bombsGenerated.length; i++){
+                        console.log(bombsGenerated[i]);
+                        let boom = boxes.includes(bombsGenerated[i]);
+                        boom.classList.add('boom');
+                    }
+                    //add boom class to box w/bomb
+                    //boxes.classList.add('boom');
                     endGame = true;
+                    //display end message + userscore
+                    userScore.classList.remove('text-white-50');
+                    userScore.classList.add('text-danger');
+                    userScore.innerHTML = `BOOM, hai pestato una mina!`;
+                    
                 }else{
+                    score++;
                     boxes.classList.add('safe'); //add safe color to safe boxes
+                    userScore.classList.remove('text-white-50');
+                    userScore.classList.add('text-success');
+                    userScore.innerHTML = `Tutto tranquillo! punteggio : ${score}`;
                 }
                 
             }
