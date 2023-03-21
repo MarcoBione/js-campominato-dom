@@ -80,6 +80,18 @@ function startGame(e){
     const bombsGenerated = generateBombs (bomb, gameDiff);
     console.log(bombsGenerated);
 
+    //showallbombs
+    function showAllBombs(){
+        const boxes = document.querySelectorAll('.boxstyle');
+        
+        for (let i = 0; i < boxes.length; i++){
+
+            if (bombsGenerated.includes(parseInt(boxes[i].innerText))){
+                boxes[i].classList.add('boom');
+            }
+        }
+    };
+
     //reset playarea
     document.getElementById('playarea').innerHTML='';
 
@@ -102,7 +114,8 @@ function startGame(e){
                     boxes.classList.add('boom');
                     //display end message + userscore
                     userScore.innerHTML = `BOOM, hai pestato una mina!`;
-                    endGame = true;                    
+                    endGame = true;
+                    showAllBombs();                    
                 }else{
                     score++;
                     boxes.classList.add('safe'); //add safe color to safe boxes
